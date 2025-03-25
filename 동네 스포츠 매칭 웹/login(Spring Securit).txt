@@ -173,7 +173,7 @@ API가 실행될 때 마다 사용자가 인증, 이 인증을 구현해놓은 �
                   .logoutSuccessUrl("/login")
                   .invalidateHttpSession(true)
                   .and()
-                  .csrf().disable() //csrf 비활성화
+                  .csrf().disable() // 로컬에서 확인을 위해 csrf 비활성화
                   .build();
     }
   
@@ -188,6 +188,7 @@ API가 실행될 때 마다 사용자가 인증, 이 인증을 구현해놓은 �
     }
   
     // 패스워드 인코더로 사용할 빈 등록
+    // password 암호화를 위해 BCryptPasswordEncoder 클래스를 생성하여 빈에 등록
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
       return new BCryptPasswordEncoder();
@@ -255,9 +256,18 @@ API가 실행될 때 마다 사용자가 인증, 이 인증을 구현해놓은 �
   return "redirect:/login";
   }
 
+#) 로그인 여부 확인 util파일
+public class LoginUtil {
+  public static boolean isLogin() {
+    boolean result = true;
 
-
-
+    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipla();
+    if (principal instanceof String) {
+      result = false;
+    }
+    return result;
+  }
+}
 
 
   
