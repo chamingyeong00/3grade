@@ -256,19 +256,6 @@ API가 실행될 때 마다 사용자가 인증, 이 인증을 구현해놓은 �
   return "redirect:/login";
   }
 
-#) 로그인 여부 확인 util파일
-public class LoginUtil {
-  public static boolean isLogin() {
-    boolean result = true;
-
-    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipla();
-    if (principal instanceof String) {
-      result = false;
-    }
-    return result;
-  }
-}
-
 
   
 
