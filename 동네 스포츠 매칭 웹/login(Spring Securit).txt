@@ -2,7 +2,8 @@
 
 API가 실행될 때 마다 사용자가 인증, 이 인증을 구현해놓은 것이 SpringSecurity
 스프링 하위 framework, 누가 인증하는지 어떤것을 할수 있는지를 담당하는 framework
-주로 Servlet Filter와 이들로 구성된 필터체인으로의 구성된 위임 모델을 사용
+주로 Servlet Filter와 이들로 구성된 FilterChain으로의 구성된 위임 모델을 사용
+
 
 
 
