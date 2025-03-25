@@ -1,8 +1,33 @@
-#SpringSecurity?
+#Spring Security?
 
 API가 실행될 때 마다 사용자가 인증, 이 인증을 구현해놓은 것이 SpringSecurity
 스프링 하위 framework, 누가 인증하는지 어떤것을 할수 있는지를 담당하는 framework
 주로 Servlet Filter와 이들로 구성된 FilterChain으로의 구성된 위임 모델을 사용
+
+basic terminology
+  Principal(접근 주체) : 보호된 대상에 접근하는 유저
+  Authentication(인증) : 인증은 '증명하다'라는 뜻으로, 유저 아이디와 비밀번호를 이용하여 로그인하는 과정
+  Authorization(인가) : '권한부여'나 '허가'라는 뜻으로, 대상이 특정 목적을 실행하도록 acess하는것을 의미
+  권한 : 인증된 주체가 애플리케이션의 동작ㅇ르 수행할 수 있도록 허락되었는지 결정할 때 사용
+
+feature and structure
+  보안과 관련하여 체계적으로 많은 옵션을 제공하려 평리하게 사용 가능
+  Filter 기반으로 동작하여 MVC와 구분하여 관리 및 동작
+  Annotation을 통해 간단하게 설정 가능
+  Spring Security는 기본적으로 Session & Cookie 방식으로 인증
+  (#) Annotation
+    다른 프로그램에게 유용한 정보를 제공하기 위해 사용되는 것으로 주석과 같은 의미
+    컴파일러에게 문법 에러를 체크하도록 정보를 제공
+    프로그램을 빌드할 때 코드를 자동으로 생성할 수 있도록 정보를 제공
+    런타임에 특정 기능을 실행하도록 정보를 제공
+    인증 관리자(Authentication Manager)와 접근 결정 관리자(Acess Decision Manger)를 통해,
+    사용자의 리소스 접근을 관리
+    인증관리자는 UsernamePasswordAuthenticationFilter
+    접근 결정 관리자는 FilterSecurityInterceptor가 수행
+  
+    
+
+
 
 
 
