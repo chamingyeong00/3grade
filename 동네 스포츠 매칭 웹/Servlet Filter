@@ -12,7 +12,7 @@
   Servlet filter chain은 요청 URL path를 기반으로 HttpServletRequest를 처리하는데 Client가 Server 측
   애플리케이션에 요청을 전송하면 Servlet Container는 요청 URL의 경로를 기반으로 어떤 필터와 어떤 서블릿을 매핑할지 결정
 
-  #1.1 웹 요청에서의 Servlet filter와 filter chain의 역할
+  #1.1 웹 요청에서의 Servlet filter와 filter chain의 역할 (간단)
     javaa.servlet.Filter interface를 구현한 Servlet filter는 웹 요청을 가로채 전처리를 할 수 있으며,
     엔드 포인트에서 요청 처리가 끝난 후 응담에 대한 후처리 또한 가능
     하나 이상의 필터들을 연결하여 필터 체인을 구성할 수 있음
