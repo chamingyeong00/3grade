@@ -145,7 +145,7 @@ API가 실행될 때 마다 사용자가 인증, 이 인증을 구현해놓은 �
       return userRepository,findByEmail(email).orElseThrow(() -> new IllegalArgumentException(email));
     }
   
-  # WebSecurityConfig
+  ## WebSecurityConfig
   
   @RequiredArgsConstructor
   @EnableWebSecurity
@@ -195,8 +195,8 @@ API가 실행될 때 마다 사용자가 인증, 이 인증을 구현해놓은 �
       return new BCryptPasswordEncoder();
     }
 
-## 회원 가입 구현
-  # DTO 생성
+# 회원 가입 구현
+  ## DTO 생성
   
     @Getter
     @Setter
@@ -205,7 +205,7 @@ API가 실행될 때 마다 사용자가 인증, 이 인증을 구현해놓은 �
       private String password;
   }
 
-  # Service 생성
+  ## Service 생성
   
   패스워드를 BCryptPasswordEncoder를 사용해서 암호화한 후에 저장
   @RequiredArgsConstructor
@@ -218,7 +218,7 @@ API가 실행될 때 마다 사용자가 인증, 이 인증을 구현해놓은 �
       return userRepository.save(User.builder().email(dto.getEmail()).password(bCryptPasswordEncoder.encode(dto.getPassword()).build()).getId();
   }
 
-  # Controller 생성
+  ## Controller 생성
   redirect : 접두사를 붙이면 회원 가입 처리가 끝난 후 무조건 /login URL로 이동
   @RequiredArgsConstructor
   @Controller
@@ -232,7 +232,7 @@ API가 실행될 때 마다 사용자가 인증, 이 인증을 구현해놓은 �
     }
   }
 
-  # ViewController 생성
+  ## ViewController 생성
   @Controller
   public class UserViewController {
     @GetMapping("/home")
@@ -251,7 +251,7 @@ API가 실행될 때 마다 사용자가 인증, 이 인증을 구현해놓은 �
     }
   }
 
-## 로그아웃 구현
+# 로그아웃 구현
   #Controller 추가
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpSeveletResponse response) {
