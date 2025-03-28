@@ -50,7 +50,7 @@ API가 실행될 때 마다 사용자가 인증, 이 인증을 구현해놓은 �
   5) client에게 session ID(Jession ID)와 함께 응답을 함
   6) 이후 요청에서는 요청 cookie에서 Jession ID정보를 통해 이미 로그이니 정보가 저장되어 있는지 확인, 이미 저장되어 있고 유효하면 인증처
     
-## 회원 도메인 생성
+# 회원 도메인 생성
 
   #UserDetails 클래스를 상속하는 User 클래스 생성
   @Table(name = "users")
@@ -125,14 +125,14 @@ API가 실행될 때 마다 사용자가 인증, 이 인증을 구현해놓은 �
   isCredentialsNonExpired() : 비밀번호가 만료되었는지 확인, 만료되지 않았을 시 true 반환
   isEnabled() : 계정이 사용 가능한지 확인, 사용 가능할 시 true 반환
 
-  # Repository 생성
+  ## Repository 생성
   spring security를 이용해 사용자 정보를 가져오기 위해 spring security가 email을 전달 받아야 함
   
   public interface UserRepository extends JpaRepository<User, Long> {
     Optinial<User> findByEmail(String email); // email로 사용자 정보 가져옴
   }
   
-  # Service 생성
+  ## Service 생성
   UserDetailsService interface를 구현하고, loadUserByUsername() method를 overriding해서 사용자 정보를 가져오는 로직
   
   @RequiredArgsConstructor
