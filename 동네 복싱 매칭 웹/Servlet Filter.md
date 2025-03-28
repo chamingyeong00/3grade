@@ -33,44 +33,44 @@
         o) /api/**과 /** filer chain이 있고 /api/message URL이 들어오는 경우, 가장 먼저 매칭된 /api/** filter chain을 사용
         o) /message/** URL인 경우, 가장 먼저 매칭되는 /** filter chiain을 사용
 
-#1.3 Filter interface
-  필터 인터페이스를 구현하고 등록하면 서블릿 컨테이너가 필터를 싱글톤 객체로 생성하고 관리한다.
-  싱클톤 객체 : 클래스의 인스턴스가 1개만 생성되는 것을 보장함
+  #1.3 Filter interface
+    필터 인터페이스를 구현하고 등록하면 서블릿 컨테이너가 필터를 싱글톤 객체로 생성하고 관리한다.
+    싱클톤 객체 : 클래스의 인스턴스가 1개만 생성되는 것을 보장함
+    
+    #1.3.1 Filter method
+      init() : 필터 초기화 method, 서블릿 컨테이너가 생성될 때 호출
+      @Override
+      public void init(FilterConfig filterConfig) throws ServletException{
+        javax.servlet.Filter.super.init(filterConfig);
+      }
+      (#) java.super vs super()
+        super : 자신이 상속받은 부모를 가리키는 참조 변수
+          자식 클래스는 부모클래스를 상속받았기 때문에 자유롭게 부모의 모든 property를 사용할 수 있음
+          (#) property
+            클래스 멤버의 일종으로, 속성을 의미
+          자식과 부모사이의 구분이 있어야 함
+          ex) ins.a = 2 / ins.super.a = 2
+        super() : 자신이 상속받느 부모의 생성자를 호출하는 method
+          상속에서의 생성자는 상속되지 않는 유일한 멤버함수
+          부모클래스의 멤버를 초기화하기 위해선, 부모클래스의 생성자를 호출
+          자식클래스 생성자를 호출할 때 부모클래스 생성자도 동시에 호출
   
-  #1.3.1 Filter method
-    init() : 필터 초기화 method, 서블릿 컨테이너가 생성될 때 호출
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException{
-      javax.servlet.Filter.super.init(filterConfig);
-    }
-    (#) java.super vs super()
-      super : 자신이 상속받은 부모를 가리키는 참조 변수
-        자식 클래스는 부모클래스를 상속받았기 때문에 자유롭게 부모의 모든 property를 사용할 수 있음
-        (#) property
-          클래스 멤버의 일종으로, 속성을 의미
-        자식과 부모사이의 구분이 있어야 함
-        ex) ins.a = 2 / ins.super.a = 2
-      super() : 자신이 상속받느 부모의 생성자를 호출하는 method
-        상속에서의 생성자는 상속되지 않는 유일한 멤버함수
-        부모클래스의 멤버를 초기화하기 위해선, 부모클래스의 생성자를 호출
-        자식클래스 생성자를 호출할 때 부모클래스 생성자도 동시에 호출
-  
-    doFilter() : 고객의 요청이 올 때 마다 해당 메서드 호출, 필터의 로직을 구현
-    @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
-                          FilterChain filterChain) throws IOException, ServletException {
-    }
-    doFilter() method는 parameter에 filterchain을 갖고 있음
-    filterchain.doFilter(request, response); method를 호출하게 되면
-    filter가 있으면 호출, 없으면 dispatcherServlet을 호출
-    이 로직을 호출하지 않으면 다음 단계로 진행되지 않음, 반드시 호출
-  
-    destory() : 필터 종료 method, Servlet Container가 종료될 때 호출
-    public void destory() {
-      javax.servlet.Filter.super.destory();
-    }
-    (#) Servlet Container
-      서버에 만들어진 서블릿이 스스로 작동하는 것이 아님, servlet을 관리 해주는 것이 필요
+      doFilter() : 고객의 요청이 올 때 마다 해당 메서드 호출, 필터의 로직을 구현
+      @Override
+      public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
+                            FilterChain filterChain) throws IOException, ServletException {
+      }
+      doFilter() method는 parameter에 filterchain을 갖고 있음
+      filterchain.doFilter(request, response); method를 호출하게 되면
+      filter가 있으면 호출, 없으면 dispatcherServlet을 호출
+      이 로직을 호출하지 않으면 다음 단계로 진행되지 않음, 반드시 호출
+    
+      destory() : 필터 종료 method, Servlet Container가 종료될 때 호출
+      public void destory() {
+        javax.servlet.Filter.super.destory();
+      }
+      (#) Servlet Container
+        서버에 만들어진 서블릿이 스스로 작동하는 것이 아님, servlet을 관리 해주는 것이 필요
 
   #1.4 Filter registration
     @Bean
