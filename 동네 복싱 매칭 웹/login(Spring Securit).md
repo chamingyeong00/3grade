@@ -50,7 +50,7 @@ API가 실행될 때 마다 사용자가 인증, 이 인증을 구현해놓은 �
   5) client에게 session ID(Jession ID)와 함께 응답을 함
   6) 이후 요청에서는 요청 cookie에서 Jession ID정보를 통해 이미 로그이니 정보가 저장되어 있는지 확인, 이미 저장되어 있고 유효하면 인증처
     
-# 회원 도메인 생성
+# 5 회원 도메인 생성
 
   #UserDetails 클래스를 상속하는 User 클래스 생성
   @Table(name = "users")
@@ -195,7 +195,7 @@ API가 실행될 때 마다 사용자가 인증, 이 인증을 구현해놓은 �
       return new BCryptPasswordEncoder();
     }
 
-# 회원 가입 구현
+# 6 회원 가입 구현
   ## DTO 생성
   
     @Getter
@@ -251,7 +251,7 @@ API가 실행될 때 마다 사용자가 인증, 이 인증을 구현해놓은 �
     }
   }
 
-# 로그아웃 구현
+# 7 로그아웃 구현
   #Controller 추가
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpSeveletResponse response) {
