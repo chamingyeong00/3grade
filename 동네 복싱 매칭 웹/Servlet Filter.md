@@ -73,6 +73,7 @@
         서버에 만들어진 서블릿이 스스로 작동하는 것이 아님, servlet을 관리 해주는 것이 필요
 
   #1.4 Filter registration
+  
     @Bean
     public FilterRegistrationBean logFilter() {
       FilterRegistrationBean<Filter> filterRegistrationBean = new FilterRegistrationBeam<>();
