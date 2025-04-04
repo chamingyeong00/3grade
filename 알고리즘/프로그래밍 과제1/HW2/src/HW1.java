@@ -84,7 +84,6 @@ public class HW1 {
         Scanner sc = new Scanner(System.in);
         System.out.println("입력 파일 이름? ");
         String fname = sc.nextLine();
-        sc.close();
 
         try {
             sc = new Scanner(new File(fname));
