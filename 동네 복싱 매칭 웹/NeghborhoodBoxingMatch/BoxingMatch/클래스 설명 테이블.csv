@@ -1,8 +1,0 @@
-클래스 이름,속성 (Attributes),메서드 (Methods),기타
-User,"userId: Long, username: String, email: String, password: String, gender: Gender, region: Region, skillLevelCondition: SkillLevelCondition","getUserId(), getUsername(), getEmail(), getPassword(), ...","@Entity, @Builder, @Getter, @Setter"
-BoxingMatch,"matchId: Long, title: String, location: String, scheduledTime: LocalDateTime, region: Region, genderCondition: GenderCondition, skilllevelCondition: SkillLevelCondition, matchstatus: MatchStatus, user: User","getMatchId(), getTitle(), getLocation(), confirmMatch(), ...","@Entity, @ManyToOne(user), @Builder"
-MatchRequest,"requestId: Long, match: BoxingMatch, user: User, status: MatchRequestStatus","getMatch(), getUser(), setStatus(), ...","@Entity, @ManyToOne(user/match), @Builder"
-Review,"reviewId: Long, content: String, rating: int, reviewer: User, match: BoxingMatch","getContent(), getRating(), getReviewer(), ...",@Entity
-UserDto,"username: String, email: String, password: String, gender: Gender, region: Region, skillLevelCondition: SkillLevelCondition",-,"@Getter, @NoArgsConstructor"
-BoxingMatchDto,"title: String, location: String, scheduledTime: LocalDateTime, region: Region, genderCondition: GenderCondition, skillLevelCondition: SkillLevelCondition, matchStatus: MatchStatus, description: String",-,"@Getter, @NoArgsConstructor"
-MatchRequestDto,"matchId: Long, userId: Long",-,"@Getter, @NoArgsConstructor"
