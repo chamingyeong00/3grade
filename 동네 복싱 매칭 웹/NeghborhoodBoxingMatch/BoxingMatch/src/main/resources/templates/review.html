@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>리뷰 작성 및 관리</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function submitReview() {
+      const text = document.getElementById('review-text').value.trim();
+      const stars = document.querySelector('input[name=\"stars\"]:checked');
+      if (!stars || !text) {
+        alert('별점과 리뷰 내용을 모두 입력해주세요.');
+        return;
+      }
+
+      const reviewList = document.getElementById('review-list');
+      const item = document.createElement('div');
+      item.className = 'bg-white p-4 rounded-xl shadow flex justify-between items-start';
+      item.innerHTML = `
+        <div>
+          <p class="text-yellow-500 mb-1">⭐ ${stars.value}점</p>
+          <p class="text-gray-700">${text}</p>
+        </div>
+        <button onclick="this.parentElement.remove()" class="text-sm text-red-500 hover:underline">삭제</button>
+      `;
+      reviewList.appendChild(item);
+
+      document.getElementById('review-form').reset();
+    }
+  </script>
+</head>
+<body class="bg-gray-100 min-h-screen p-6">
+
+  <div class="max-w-2xl mx-auto space-y-8">
+    <h1 class="text-3xl font-bold text-center">리뷰 작성 및 관리</h1>
+
+    <!-- 리뷰 작성 폼 -->
+    <div class="bg-white p-6 rounded-xl shadow">
+      <h2 class="text-xl font-semibold mb-4">리뷰 작성하기</h2>
+      <form id="review-form" onsubmit="event.preventDefault(); submitReview();" class="space-y-4">
+        <div class="flex items-center gap-4">
+          <label class="flex items-center gap-1 text-yellow-500">
+            <input type="radio" name="stars" value="1" /> ⭐
+          </label>
+          <label class="flex items-center gap-1 text-yellow-500">
+            <input type="radio" name="stars" value="2" /> ⭐⭐
+          </label>
+          <label class="flex items-center gap-1 text-yellow-500">
+            <input type="radio" name="stars" value="3" /> ⭐⭐⭐
+          </label>
+          <label class="flex items-center gap-1 text-yellow-500">
+            <input type="radio" name="stars" value="4" /> ⭐⭐⭐⭐
+          </label>
+          <label class="flex items-center gap-1 text-yellow-500">
+            <input type="radio" name="stars" value="5" /> ⭐⭐⭐⭐⭐
+          </label>
+        </div>
+        <textarea id="review-text" rows="4" placeholder="리뷰 내용을 입력하세요." class="w-full p-3 border rounded-md"></textarea>
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">리뷰 등록</button>
+      </form>
+    </div>
+
+    <!-- 내 리뷰 목록 -->
+    <div>
+      <h2 class="text-xl font-semibold mb-4">내 리뷰 목록</h2>
+      <div id="review-list" class="space-y-4">
+        <!-- 작성된 리뷰가 여기에 추가됨 -->
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
