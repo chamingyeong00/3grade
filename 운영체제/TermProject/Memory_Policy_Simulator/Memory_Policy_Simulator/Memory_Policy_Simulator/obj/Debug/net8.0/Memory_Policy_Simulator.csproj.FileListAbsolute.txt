@@ -1,0 +1,4 @@
+/Users/chamingyeong/Public/운영체제/Memory_Policy_Simulator/Memory_Policy_Simulator/Memory_Policy_Simulator/obj/Debug/net8.0/Memory_Policy_Simulator.GeneratedMSBuildEditorConfig.editorconfig
+/Users/chamingyeong/Public/운영체제/Memory_Policy_Simulator/Memory_Policy_Simulator/Memory_Policy_Simulator/obj/Debug/net8.0/Memory_Policy_Simulator.AssemblyInfoInputs.cache
+/Users/chamingyeong/Public/운영체제/Memory_Policy_Simulator/Memory_Policy_Simulator/Memory_Policy_Simulator/obj/Debug/net8.0/Memory_Policy_Simulator.AssemblyInfo.cs
+/Users/chamingyeong/Public/운영체제/Memory_Policy_Simulator/Memory_Policy_Simulator/Memory_Policy_Simulator/obj/Debug/net8.0/Memory_Policy_Simulator.csproj.CoreCompileInputs.cache

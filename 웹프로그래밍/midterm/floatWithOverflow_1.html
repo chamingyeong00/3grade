@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Float With Overflow</title>
+    <style>
+        div.container {
+            /* overflow: hidden; */
+        }
+        div.item {
+            float: left;
+            margin: 0 3px;
+            padding: 10px;
+            border: 1px solid black;
+        }
+        div.clear {
+            clear: both;
+        }
+    </style>
+    </head>
+    <body>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elt.</p>
+        <!-- <div class="container"> -->
+        <div class="clear"></div>
+        <div>
+            <div class="item">메뉴 - 1</div>
+            <div class="item">메뉴 - 2</div>
+            <div class="item">메뉴 - 3</div>
+            <div class="item">메뉴 - 4</div>
+        </div>
+        <div class="clear"></div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </body>
+</html>

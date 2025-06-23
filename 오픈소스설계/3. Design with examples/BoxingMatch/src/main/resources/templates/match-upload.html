@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>매칭 등록</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-6">
+
+<div class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow">
+  <h1 class="text-3xl font-bold mb-6 text-center">복싱 매칭 등록</h1>
+
+  <form th:action="@{/match/upload}" th:object="${matchDto}" method="post" class="space-y-4">
+    <input type="text" th:field="*{title}" placeholder="매칭 제목" required class="w-full p-3 border rounded-md" />
+    <input type="text" th:field="*{location}" placeholder="매칭 장소" required class="w-full p-3 border rounded-md" />
+    <input type="datetime-local" th:field="*{scheduledTime}" required class="w-full p-3 border rounded-md" />
+
+    <!-- 지역 선택 (Region enum) -->
+    <select th:field="*{region}" required class="w-full p-3 border rounded-md">
+      <option value="">지역 선택</option>
+      <option th:each="r : ${regions}" th:value="${r}" th:text="${r}"></option>
+    </select>
+
+    <div class="grid grid-cols-2 gap-4">
+      <select th:field="*{genderCondition}" required class="p-3 border rounded-md w-full">
+        <option value="">성별 조건</option>
+        <option th:each="g : ${genders}" th:value="${g.name()}" th:text="${g}"></option>
+      </select>
+
+      <select th:field="*{skilllevelCondition}" required class="p-3 border rounded-md w-full">
+        <option value="">실력 조건</option>
+        <option th:each="l : ${levels}" th:value="${l}" th:text="${l}"></option>
+      </select>
+    </div>
+
+    <textarea th:field="*{description}" placeholder="추가 설명" rows="4" class="w-full p-3 border rounded-md"></textarea>
+
+    <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700">
+      등록하기
+    </button>
+  </form>
+  <p th:if="${success}" class="mt-4 text-green-600 font-semibold text-center">
+    ✅ 등록 완료! 내 매칭 목록에 추가되었습니다.
+  </p>
+</div>
+
+</body>
+</html>
